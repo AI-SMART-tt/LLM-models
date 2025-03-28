@@ -1,22 +1,78 @@
 # LLM-models
 大模型相关的时间序列预测模型与未来趋势
 
-# 📚 大模型相关的时间序列预测模型与未来趋势
+好的！下面是对**大模型（Large Models / Foundation Models）在时间序列预测中的应用**进行的详细总结，并结合当前研究趋势和产业发展，**预测未来五年可能流行的时间序列模型技术方向**。
 
-## 🌟 当前大模型相关的时间序列预测模型
+---
 
-| 模型名称 | 开发方 | 核心特点 | GitHub/论文 |
-|---------|------|---------|------------|
-| 🚀 **TimeGPT/TimeGPT-1** | Nixtla | 首个针对时间序列的通用基础模型，类似NLP领域的GPT | [论文](https://arxiv.org/abs/2310.03589) / [GitHub](https://github.com/Nixtla/nixtla) |
-| 📡 **LagLLama** | 微软 | 利用LLM架构和滞后特征的时序预测模型 | [论文](https://arxiv.org/abs/2310.06625) / [GitHub](https://github.com/microsoft/Lag-Llama) |
-| 🧠 **TimesFM** | 谷歌 | 大规模时间序列基础模型，支持多种预测任务 | [论文](https://arxiv.org/abs/2310.05918) / [GitHub](https://github.com/JunweiLiang/TimesFM) |
-| 🌐 **GPT-4TS** | 清华大学 | 基于GPT架构的时间序列预训练大模型 | [论文](https://arxiv.org/abs/2308.11176) |
-| 💫 **MOMENT** | MBZUAI | 多任务时间序列基础模型，统一预测、异常检测等任务 | [论文](https://arxiv.org/abs/2312.04557) / [GitHub](https://github.com/mbzuai-oryx/MOMENT) |
-| 🧩 **PatchTST** | 港大/新加坡国立大学 | 将Vision Transformer的patch理念引入时序预测 | [论文](https://arxiv.org/abs/2211.14730) / [GitHub](https://github.com/yuqinie98/PatchTST) |
-| 🔄 **iTransformer** | 清华大学 | 重新思考Transformer在时序中的应用，创新性地转置输入 | [论文](https://arxiv.org/abs/2310.06625) / [GitHub](https://github.com/thuml/Time-Series-Library) |
-| 🧬 **Chronos** | 清华大学 | 大规模预训练时间序列模型，提升泛化能力 | [论文](https://arxiv.org/abs/2306.12021) / [GitHub](https://github.com/thuml/Chronos) |
-| 🎲 **TACTiS** | 亚马逊 | 基于Transformer的多变量概率预测模型 | [论文](https://arxiv.org/abs/2202.07125) / [GitHub](https://github.com/amazon-science/chronos-forecasting) |
-| 🌀 **TSMixer** | 谷歌 | 混合专家模型，轻量高效的时序架构 | [论文](https://arxiv.org/abs/2303.06053) / [GitHub](https://github.com/google-research/google-research/tree/master/tsmixer) |
+## 🔮 一、大模型相关的时间序列预测模型（Foundation Models for Time Series）
+
+> 随着 GPT、BERT 等大模型在 NLP 中的突破，时间序列领域也开始出现类似的 **foundation models**，具备 **预训练-微调、迁移学习、跨任务泛化能力**。
+
+### ✅ 特征：
+
+- 多任务学习（forecasting, classification, anomaly detection）
+- 多模态支持（时间序列 + 文本/图像）
+- 支持上下文建模与长序列记忆
+- 具备大规模预训练能力（百万级时间序列）
+
+---
+
+### 📌 1. **TimeGPT (Nixtla)**
+
+| 项目 | 内容 |
+|------|------|
+| 📄 论文 | [TimeGPT: Foundation Models for Time Series Forecasting](https://arxiv.org/abs/2310.06205) |
+| 💻 GitHub | [https://github.com/Nixtla/timegpt](https://github.com/Nixtla/timegpt) |
+| 🚀 特点 | 商业级 API + 预训练模型，支持多种频率（daily, hourly, etc.），支持零样本/少样本预测 |
+| 🧠 架构 | 多尺度 Transformer + 多频建模 |
+| 📦 应用 | Forecasting、Anomaly Detection、Classification |
+
+---
+
+### 📌 2. **Lag-Llama (Microsoft)**
+
+| 项目 | 内容 |
+|------|------|
+| 📄 论文 | [Lag-Llama: Foundation Models for Time Series Forecasting](https://arxiv.org/abs/2310.06625) |
+| 💻 GitHub | [https://github.com/microsoft/Lag-Llama](https://github.com/microsoft/Lag-Llama) |
+| 🧠 架构 | 基于 LLaMA 的因果自回归 Transformer，支持长序列建模 |
+| 🔍 特点 | 多任务训练，能够泛化到未见过的数据集 |
+| 📊 数据集 | 训练于 20+ 时间序列数据集，跨领域泛化能力强 |
+
+---
+
+### 📌 3. **TST (Time Series Transformer) Pretraining**
+
+| 项目 | 内容 |
+|------|------|
+| 📄 论文 | [A Time Series Foundation Model: Training on All Data, Fine-tune on One](https://arxiv.org/abs/2306.15895) |
+| 📦 亮点 | 类似 BERT 的预训练方式，使用掩码预测（Masked Value Modeling） |
+| 🧠 架构 | TST + Fine-tuning |
+| 🎯 应用 | Forecasting, Classification, Imputation |
+
+---
+
+### 📌 4. **TSMixer (Meta/Facebook)**
+
+| 项目 | 内容 |
+|------|------|
+| 📄 论文 | [TSMixer: An All-MLP Architecture for Time Series Forecasting](https://arxiv.org/abs/2305.13318) |
+| 💡 架构 | 非 Transformer，全 MLP 架构，效率高，效果强 |
+| 🚀 特点 | 在大规模数据集上预训练，结构极简，适合工业部署 |
+
+---
+
+### 📌 5. **PatchTST (2023)**
+
+| 项目 | 内容 |
+|------|------|
+| 📄 论文 | [PatchTST: Long-Term Time-Series Forecasting with Patch Attention](https://arxiv.org/abs/2211.14730) |
+| 🔍 特点 | 类似 ViT，将时间序列切成 patch，提升长序列建模能力 |
+| 💻 GitHub | [https://github.com/yuqinie98/PatchTST](https://github.com/yuqinie98/PatchTST) |
+
+---
+
 
 ## 🔮 未来五年可能流行的时序模型趋势
 
